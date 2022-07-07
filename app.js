@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGO_URL, {
-    dbName: 'bookDB',
+    dbName: 'book_directory',
     useNewUrlParser: true,
     useUnifiedTopology: true 
 }, err => err ? console.log(err) : console.log('Connected to database'));
