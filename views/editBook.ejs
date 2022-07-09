@@ -1,0 +1,50 @@
+<%-include("partials/header", {page: "Edit Book"})-%>
+
+<div class="card">
+  <form action="/update/<%- editbook._id %>" method="POST">
+    <h4>Edit Book Details: </h4>  
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="<%- editbook.title %>" placeholder="Title"  id ="title" name="title">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="date" class="col-sm-2 col-form-label">Published on</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" id="date" placeholder="Date" name="date" value="<%- dateString 
+           %>" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="qty" class="col-sm-2 col-form-label">Quantity</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="qty" placeholder="Quantity" name="qty" value="<%- editbook.quantity %>">
+        </div>
+    </div>
+    <h4>Author Details: </h4>
+    <div class="form-group row">
+        <label for="first-name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="first-name" placeholder="First name" name="first_name" value="<%- editbook.author.first_name%>">
+        </div>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="last-name" placeholder="Last name" name="last_name" value="<%- editbook.author.last_name%>">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="age" class="col-sm-2 col-form-label">Age</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="age" placeholder="Age" name="age" value="<%- editbook.author.age%>">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+</form>
+</div>
+
+
+<%-include("partials/footer")-%>

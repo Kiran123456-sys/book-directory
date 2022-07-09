@@ -5,10 +5,10 @@
             <div class="card">
                 <div class="card-body">
                     <!-- <p class="card-text blah" > </p> -->
-                     <h5><a href="/books/<%- book.title %>" class="card-title"><%= book.title %></a></h5>
+                     <h5><a href="/books/<%- book._id %>" class="card-title"><%= book.title %></a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">- <%= book.author.first_name %> <%= book.author.last_name %> (<%= book.author.age %>)</h6>
                     <p class="card-text blah">
-                        Published on: <%= book.published.toLocaleDateString() %>
+                        Published on: <%= book.published?.toLocaleDateString() %>
                         <br>
                         Quantity: <%= book.quantity %>
                     </p>
