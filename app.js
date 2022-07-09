@@ -82,7 +82,18 @@ app.route('/books/:_id')
                         res.redirect('/books')
                     }  
                  })
-    });
+    })
+    .delete(function(req,res){
+        
+        Book.findByIdAndDelete({_id:req.params._id}, function (err, book) {
+            if(err) {
+                res.send('error removing')
+               } else {
+                console.log(book);
+                res.status(204);
+              }
+          });
+    })
 
 app.route('/update/:_id')
     .post((req, res) =>{
@@ -112,6 +123,17 @@ app.route('/update/:_id')
     //                     }  
     //                  })
     //     });
+    app.route('/delete/:id').get(function(req,response){
+        
+        Book.deleteOne({_id:req.params.id}, function (err, _result) {
+            if (err) {
+              response.status(400).send(`Error deleting listing with id ${req.params.id}!`);
+            } else {
+              console.log("1 document deleted");
+              response.redirect('/books')
+            }
+          });
+    })
         
 
 app.route('/add')
