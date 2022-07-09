@@ -34,6 +34,7 @@ const Book = mongoose.model('book', bookSchema);
 
 app.get("/", (req, res) => {
     res.render("index");
+
 })
 
 app.route('/books')
@@ -46,9 +47,20 @@ app.route('/books')
     .post((req, res) => {
         Book.find({"title" : {$regex : req.body.search}}, (err, books) => {
             if (err) return console.log(err);
+            console.log(books)
             res.render('books', {books: books});
         });
     });
+
+app.route('/books/:title')
+    .get((req,res) => {
+        Book.find({"title" : req.params.title},(err,book)=>{
+            if (err) return console.log(err);
+            console.log(book)
+             res.render('book',{book: book})
+        })
+
+    })
 
 app.route('/add')
     .get((req, res) => {
@@ -60,6 +72,7 @@ app.route('/add')
                 console.log(err);
             } else if(author) {
                 console.log('Author already exists');
+                console.log(req.body);
                 const book = new Book({
                     title: req.body.title,
                     published: req.body.date,
@@ -95,7 +108,7 @@ app.route('/add')
                             if(err) {
                                 console.log(err);
                             } else {
-                                console.log('Book added');
+                                console.log('Book added',book);
                                 res.redirect('/books');
                             }
                         });
@@ -104,6 +117,8 @@ app.route('/add')
             }
         })
     })
+
+app.route('/add/')
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -1,0 +1,21 @@
+<%-include("partials/header", {page: "Book"})-%>
+<div class="row gx-4 gy-4">
+    <% book.forEach(function(book,index){ %>
+        <div  class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- <p class="card-text blah" > </p> -->
+                     <h5><a class="card-title"><%= book.title %></a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">- <%= book.author.first_name %> <%= book.author.last_name %> (<%= book.author.age %>)</h6>
+                    <p class="card-text blah">
+                        Published on: <%= book.published.toLocaleDateString() %>
+                        <br>
+                        Quantity: <%= book.quantity %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<%-include("partials/footer")-%>
