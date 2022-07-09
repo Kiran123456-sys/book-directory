@@ -13,13 +13,10 @@
                         Quantity: <%= book.quantity %>
                     </p>
                 </div>
-                <div class="d-flex row">
-                    <div><form  action="/books/<%- book._id%>" method="POST">
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                            </form></div>                    
-                    <div><form  action="/delete/<%- book._id%>" method="GET">
-                            <button type="submit" class="btn btn-primary">Delete</button>
-                            </form></div>
+                <div>
+                    <form class="d-flex" action="/books/<%- book._id%>" method="POST">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
                 </div>
             </div>
         </div>
